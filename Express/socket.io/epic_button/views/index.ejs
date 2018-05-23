@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Epic Button Game</title>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <script type="text/javascript" src='/socket.io/socket.io.js'></script>
+
+     <script type="text/javascript">
+          $(document).ready( () => {
+               var socket = io.connect();
+               var name = prompt('What is your name?')
+
+               $('#counter').html(name);
+
+               // clicking the button to incremnet the count here
+               $('button').click( function(){
+                    socket.emit('count_one', {})
+                    console.log('sending emit to increment the count');
+               })
+
+               // listening to the server sending back the increment then adding it to the HTML
+               socket.on('increment_one', (data) => {
+                    $('#counter').html('You cicked the button...' + JSON.stringify(data.response));
+                    console.log('Got the ount from the server');
+               })
+
+               // hitting the reset button on the client should send an emit to the server to reset the var counter to zero
+               $('#reset').click( () => {
+                    socket.emit('reset_counter', {});
+                    console.log('sending reset emit from client');
+               })
+
+               // listening to the server to pass the var counter back into the client and display the new var of zero
+               socket.on('zero', (data) => {
+                    $('#counter').html('You reset the counter to ' + JSON.stringify(data.response))
+               })
+          });
+
+     </script>
+
+</head>
+<body>
+
+     <main>
+          <h3>Place holder for button pushed</h3>
+          <div id="counter">
+
+          </div>
+
+          <div class="epic">
+               <h3>Push the button to update the count</h3>
+               <button type="button" id='button' name="button">Push The Epic Button</button>
+          </div>
+          <hr>
+          <button type="button" id='reset' name="button">Reset</button>
+     </main>
+
+     <footer>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <h2>Instruction: </h2>
+          <ul>
+               <li>Get socket connect and listening for emits.</li>
+               <li>Create a button that listens for a click.</li>
+                    <ul>
+                         <li>That button will emit to the server and increment a count that will display on the index page in real time</li>
+                         <li>Maybe use session.</li>
+                              <ul>
+                                   <li>If not session then just a "var"</li>
+                              </ul>
+                    </ul>
+               <li>When the server gets the emit it will also broadcast to all other connections on the same server</li>
+               <li>Create a button that resets the count</li>
+                    <ul>
+                         <li>When the reset happens. It will affect all connections </li>
+                    </ul>
+          </ul>
+     </footer>
+</body>
+</html>

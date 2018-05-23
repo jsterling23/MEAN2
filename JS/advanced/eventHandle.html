@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+     <script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+     <script type="text/javascript">
+
+     (function(){ console.log('Launched before the document loaded...') })();
+
+
+
+          $(document).ready(function(){
+
+               var button = document.getElementById('button');
+               var button2 = document.getElementById('button2');
+
+               button.addEventListener('click', alertFunction);
+               button2.addEventListener('mouseover', addTextFunction);
+
+               var count = 0;
+
+               function alertFunction(){
+                    (function(){
+                         console.log('immediate function');
+                         console.log('My count is ' + count);
+                    }());
+                    alert('This is the alert!');
+               }
+
+               function addTextFunction(){
+                    var test = document.createElement('h1');
+                    var add = "Adding this to the page";
+                    test.innerHTML = add
+                    document.getElementById('test').appendChild(test)
+                    console.log('in add text function');
+               }
+
+
+
+          });
+
+     (function(){ console.log('Launched after the document loaded') }());
+
+
+     </script>
+
+</head>
+<body>
+     <button type="button" id="button" name="button">Click Me</button>
+     <button type="button" id="button2" name="button">Maybe click me??</button>
+
+     <div id="test">
+          <p>The text should be going in here</p>
+     </div>
+
+</body>
+</html>

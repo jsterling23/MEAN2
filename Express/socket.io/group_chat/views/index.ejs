@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Group Chat</title>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <script type="text/javascript" src='/socket.io/socket.io.js'></script>
+
+     <script type="text/javascript">
+
+          $(document).ready( () => {
+               var socket = io.connect();
+               var current_user;
+
+               var new_user = () => {
+                    var name = prompt("What shall you be called..");
+                    socket.emit('page_load', {name: name});
+               };
+
+               new_user();
+
+               socket.on('existing_user', (data) => {
+                    $('#error').html(data.error);
+                    new_user();
+               });
+
+               socket.on('load_messages', (data) => {
+                    console.log('in load messages');
+                    $('#error').html('');
+                    current_user = data.current_user;
+                    var messages = data.messages;
+                    var messageThread = '';
+
+                    for(let i = 0; i < messages.length; i++){
+                         messageThread += '<p>' + messages[i].name +': ' + messages[i].message + '</p>';
+                    };
+
+                    $('#chat_box').append(messageThread);
+               });
+
+               $('#new_message').submit( () => {
+                    console.log('pushing the fucking submit button')
+                    socket.emit('new_message', {message: $('#message').val(), user: current_user})
+                    return false;
+               });
+
+               socket.on('post_new_message', (data) => {
+                    console.log('posting new message', data)
+                    $('#chat_box').append('<p>' + data.user + ': ' + data.new_message + '</p>');
+               })
+
+               $('#button').click(()=>{
+                    console.log('in the button click..')
+                    socket.emit('take_this_data', {data: current_user});
+               })
+
+               socket.on('put_this_there', (data) => {
+                    console.log('got the data back from the server')
+                    $('#chat_box').append().html(JSON.stringify(data))
+               })
+
+          });
+
+     </script>
+
+</head>
+<body>
+
+     <div id='header'></div>
+     <div id="error"></div>
+
+     <hr>
+     <br>
+
+     <h4>Conversation Box</h4>
+     <div id="chat_box">
+
+     </div>
+     <hr>
+     <br>
+     <form id='new_message'>
+          <input type="text" id='message' placeholder="Enter new message here..">
+          <input type="submit" value="New Message">
+     </form>
+     <br>
+     <br>
+     <button type="button" id='button' name="button">Push me bitch</button>
+</body>
+</html>

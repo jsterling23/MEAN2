@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Survey</title>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <script type="text/javascript" src='/socket.io/socket.io.js'></script>
+
+     <script type="text/javascript">
+          $(document).ready( () => {
+
+               var socket = io.connect();
+
+               $('#form').submit( function(e) {
+                    e.preventDefault();
+
+                    socket.emit('message', {
+                         name: $('#name').val(),
+                         location: $('#location').val(),
+                         language: $('#language').val(),
+                         comment: $('#comment').val(),
+                    });
+               });
+
+               socket.on('update_message', function(data){
+                    $('#message').html('You emmited the following shit to the server:' + JSON.stringify(data.response));
+               });
+
+               socket.on('random_number', function(data){
+                    $('#number').html('Your random number is the following:' +JSON.stringify(data.response));
+               });
+
+
+          });
+     </script>
+</head>
+<body>
+
+     <div id="message">
+          
+     </div>
+
+     <div id="number">
+
+     </div>
+
+
+     <form class="" id='form' action="" method="post">
+          <div>
+               <label for="name">Your name: </label>
+               <input type="text" id='name' name="name" value="">
+          </div>
+          <div>
+               <label for="location">Dojo Location: </label>
+               <select name="location" id='location'>
+                    <option value='dallas'>Dallas</option>
+                    <option value='seattle'>Seattle</option>
+               </select>
+          </div>
+          <div>
+               <label for="language">Fav Language: </label>
+               <select name="language" id='language'>
+                    <option value='javascript'>Javascript</option>
+                    <option value='Python'>Python</option>
+               </select>
+          </div>
+          <div>
+               <label for="comment">Comment: </label><br>
+               <textarea name="comment" id='comment' rows="5" cols="20"></textarea>
+          </div>
+          <div>
+               <input type="submit" name="" value="Submit">
+          </div>
+     </form>
+</body>
+</html>

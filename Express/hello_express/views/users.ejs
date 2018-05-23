@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>blah</title>
+</head>
+<body>
+     <h4>Ejs file users from the views folder</h4>
+
+     <h3>List of the users in the Fake database</h3>
+
+     <% for (var x in users) { %>
+
+          <h5>Name: <%= users[x].name %></h5>
+          <h5>Email: <%= users[x].email %></h5>
+          <hr>
+     <% } %>
+</body>
+</html>

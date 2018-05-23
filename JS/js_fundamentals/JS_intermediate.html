@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>JS Inter~</title>
+</head>
+<body>
+     <script>
+     function starString(num){
+          let stars = '';
+          for(let i = 1; i <= num; i++){
+               stars += '*';
+          };
+          return stars
+     };
+     // let stars = starString(8)
+     // console.log(stars)
+
+
+
+     function drawStars(array){
+          for (let i = 0; i <= array.length; i++){
+               if (typeof array[i] == 'string'){
+                    var y = array[i][0]
+                    var z = '';
+                    var length = array[i].length
+                    for(let i = 0; i < length; i++){
+                         z += y
+                    };
+                    console.log(z)
+               };
+               console.log (starString(array[i]));
+          };
+     };
+     let x = [1, 6, 'bob', 1, 3, 5, 'jerry', 7, 25, 'super']
+     drawStars(x)
+
+     </script>
+
+</body>
+</html>

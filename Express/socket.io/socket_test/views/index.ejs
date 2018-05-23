@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Index</title>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+
+     <script type="text/javascript">
+
+          $(document).ready(function(){
+
+               var socket = io.connect();
+
+               $('button').click( () => {
+                    socket.emit('button_clicked', {reason: "because I want to learn about sockets!"});
+               })
+
+
+               socket.on('server_response', function(data) {
+                    console.log('The server says: ' + data.response);
+               })
+
+          });
+
+     </script>
+
+</head>
+<body>
+     <h4>Index</h4>
+     <button type="button" id='button' name="button">I am a button</button>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+
+     <script type="text/javascript">
+
+     var students = [
+     {first_name:  'Michael', last_name : 'Jordan'},
+     {first_name : 'John', last_name : 'Rosales'},
+     {first_name : 'Mark', last_name : 'Guillen'},
+     {first_name : 'KB', last_name : 'Tonel'}
+     ]
+
+     function studentArray(students){
+
+          var array = students;
+
+          for (var i = 0; i < array.length; i++){
+               console.log(i, '-', array[i].first_name, array[i].last_name, '-', (array[i].first_name.length + array[i].last_name.length));
+          }
+
+     }
+
+     studentArray(students);
+
+
+     </script>
+
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+     <script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+
+
+     <script type="text/javascript">
+     $(document).ready(function(){
+          // $.get("https://api.github.com/users/edeleon44", displayName)
+          $.get("https://api.github.com/users/jsterling23", displayName)
+
+
+          function displayName(data){
+               var name = data.name;
+               var url = data.html_url;
+               var git_image = data.avatar_url;
+               console.log(data)
+
+               var header = document.createElement('h1');
+               header.innerHTML = name;
+               document.getElementById('header').appendChild(header);
+
+               var link = document.createElement('a');
+               var linkText = document.createTextNode('Go to the site');
+               link.appendChild(linkText);
+               link.href = url
+               document.getElementById('link').appendChild(link);
+
+
+               var image = document.createElement('IMG');
+               image.src = git_image;
+               document.getElementById('pic').appendChild(image)
+
+          };
+
+          var button = document.getElementById('button');
+          button.addEventListener('click', getBio);
+
+          function getBio(){
+               $.get("https://api.github.com/users/jsterling23", getData);
+          };
+          function getData(data){
+               var bio;
+               if(data.bio){
+                    bio = data.bio;
+               }
+               else{
+                    console.log('whoops.. No bio bitch')
+               }
+               var makeBio = document.createElement('p');
+               makeBio.innerHTML = bio;
+               document.getElementById('bio').appendChild(makeBio);
+          }
+
+     });
+     </script>
+
+
+</head>
+<body>
+     <div id='header'>
+          <h3>Other Users</h3>
+          <h4>Welcome</h4>
+     </div>
+     <div id="pic"></div>
+     <div id="link"></div>
+
+     <div id="bio">
+          <button type="button" id='button' name="button">Click to see bio</button>
+     </div>
+
+</body>
+</html>

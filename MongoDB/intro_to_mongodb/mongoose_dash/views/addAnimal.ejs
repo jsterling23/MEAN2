@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Add Animal</title>
+</head>
+<body>
+     <h1>Add an animal</h1>
+     <hr>
+     <% if (typeof(errors) != 'undefined') { %>
+          <% for (var i in errors) { %>
+               <p><%= errors[i].messages %></p>
+               <p><%= errors[i] %></p>
+          <% } %>
+     <% } %>
+
+     <form action="/animal/new" method="post">
+          <div class="form_group">
+               <label for="name">Animal Name: </label>
+               <input type="text" name="name">
+          </div>
+          <div class="form_group">
+               <label for="legs">Legs: </label>
+               <input type="number" name="legs">
+          </div>
+          <input type="submit" value="Add Animal">
+     </form>
+
+     <hr>
+
+     <a href="/">Home</a>
+</body>
+</html>

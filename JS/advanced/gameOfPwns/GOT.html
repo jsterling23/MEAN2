@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+
+
+     <script type="text/javascript">
+          $(document).ready(function(){
+
+               const algood = document.getElementById('algood');
+               algood.addEventListener('click', getAlgoodData);
+               function getAlgoodData(){
+                    $.get('https://www.anapioficeandfire.com/api/houses/1', getData);
+                    function getData(data){
+                         console.log(data);
+                         var name = `House Name: ${data.name}`;
+                         var words = `Words: ${data.words}`;
+                         var titles = `Titles: ${data.titles}`;
+                         var region = `Region: ${data.region}`;
+
+                         if(!data.name){
+                              name = 'Name: No Name Attached..'
+                         }
+                         if(!data.words){
+                              words = 'Words: No Words Attached..'
+                         }
+                         if(data.titles == ""){
+                              titles = 'Titles: No titles Attached..'
+                         }
+                         if(!data.region){
+                              region = 'Region: No Region Attached..'
+                         }
+                         displayInfo(name,words,titles,region);
+
+                    };
+                    function displayInfo(name, words, titles, region){
+                         console.log(`name ${name}. words ${words}. titles ${titles}. region ${region}.`)
+                         document.getElementById('name').innerHTML = name;
+                         document.getElementById('words').innerHTML = words;
+                         document.getElementById('titles').innerHTML = titles;
+                         document.getElementById('region').innerHTML = region;
+
+                    };
+               };
+
+
+
+               const amber = document.getElementById('amber');
+               amber.addEventListener('click', getAmberData);
+               function getAmberData(){
+                    $.get('https://www.anapioficeandfire.com/api/houses/3', getData);
+                    function getData(data){
+                         console.log(data);
+                         var name = `House Name: ${data.name}`;
+                         var words = `Words: ${data.words}`;
+                         var titles = `Titles: ${data.titles}`;
+                         var region = `Region: ${data.region}`;
+
+                         if(!data.name){
+                              name = 'Name: No Name Attached..'
+                         }
+                         if(!data.words){
+                              words = 'Words: No Words Attached..'
+                         }
+                         if(data.titles == ""){
+                              titles = 'Titles: No titles Attached..'
+                         }
+                         if(!data.region){
+                              region = 'Region: No Region Attached..'
+                         }
+                         displayInfo(name,words,titles,region);
+
+                    };
+                    function displayInfo(name, words, titles, region){
+                         console.log(`name ${name}. words ${words}. titles ${titles}. region ${region}.`)
+                         document.getElementById('name').innerHTML = name;
+                         document.getElementById('words').innerHTML = words;
+                         document.getElementById('titles').innerHTML = titles;
+                         document.getElementById('region').innerHTML = region;
+
+                    };
+               };
+
+
+
+               var arryn = document.getElementById('arryn');
+               arryn.addEventListener('click', getArrynData);
+               function getArrynData(){
+                    $.get('https://www.anapioficeandfire.com/api/houses/7', getData);
+                    function getData(data){
+                         console.log(data);
+                         var name = `House Name: ${data.name}`;
+                         var words = `Words: ${data.words}`;
+                         var titles = `Titles: ${data.titles}`;
+                         var region = `Region: ${data.region}`;
+
+                         if(!data.name){
+                              name = 'Name: No Name Attached..'
+                         }
+                         if(!data.words){
+                              words = 'Words: No Words Attached..'
+                         }
+                         if(data.titles == ""){
+                              titles = 'Titles: No titles Attached..'
+                         }
+                         if(!data.region){
+                              region = 'Region: No Region Attached..'
+                         }
+                         displayInfo(name,words,titles,region);
+
+                    };
+                    function displayInfo(name, words, titles, region){
+                         console.log(`name ${name}. words ${words}. titles ${titles}. region ${region}.`)
+                         document.getElementById('name').innerHTML = name;
+                         document.getElementById('words').innerHTML = words;
+                         document.getElementById('titles').innerHTML = titles;
+                         document.getElementById('region').innerHTML = region;
+
+                    };
+               };
+
+
+
+               var baelish = document.getElementById('baelish');
+               baelish.addEventListener('click', getBaelishData);
+               function getBaelishData(){
+                    $.get('https://www.anapioficeandfire.com/api/houses/10', getData);
+                    function getData(data){
+                         console.log(data);
+                         var name = `House Name: ${data.name}`;
+                         var words = `Words: ${data.words}`;
+                         var titles = `Titles: ${data.titles}`;
+                         var region = `Region: ${data.region}`;
+
+                         if(!data.name){
+                              name = 'Name: No Name Attached..'
+                         }
+                         if(!data.words){
+                              words = 'Words: No Words Attached..'
+                         }
+                         if(data.titles == ""){
+                              titles = 'Titles: No titles Attached..'
+                         }
+                         if(!data.region){
+                              region = 'Region: No Region Attached..'
+                         }
+                         displayInfo(name,words,titles,region);
+
+                    };
+                    function displayInfo(name, words, titles, region){
+                         console.log(`name ${name}. words ${words}. titles ${titles}. region ${region}.`)
+                         document.getElementById('name').innerHTML = name;
+                         document.getElementById('words').innerHTML = words;
+                         document.getElementById('titles').innerHTML = titles;
+                         document.getElementById('region').innerHTML = region;
+
+                    };
+               };
+
+
+          });
+     </script>
+<!--
+     pick 4 houses:
+          1:House Algood
+          2:House Amber
+          3:House Ashwood
+          4:House Ambrose -->
+
+
+
+
+</head>
+<body>
+     <header>
+          <h1>I DONT KNOW GAME OF THRONES!</h1>
+     </header>
+     <br>
+     <div class="container-fluid">
+          <div class="row">
+               <div class="col-lg-3">
+                    <p>House Algood... The API doesn't have the house info and if it does then I am an idiot but the logic should work for the houses I have chosen from the API</p>
+                    <img src="images/baratheon.png" id='algood' class='img-thumbnail' alt="">
+               </div>
+               <div class="col-lg-3">
+                    <p>House Amber... The API doesn't have the house info and if it does then I am an idiot but the logic should work for the houses I have chosen from the API</p>
+                    <img src="images/lannister.jpg" id='amber' class='img-thumbnail' alt="">
+               </div>
+               <div class="col-lg-3">
+                    <p>House Ashwood... The API doesn't have the house info and if it does then I am an idiot but the logic should work for the houses I have chosen from the API</p>
+                    <img src="images/stark.jpg" id='arryn' class='img-thumbnail' alt="">
+               </div>
+               <div class="col-lg-3">
+                    <p>House Ambrose... The API doesn't have the house info and if it does then I am an idiot but the logic should work for the houses I have chosen from the API</p>
+                    <img src="images/targaryen.jpg" id='baelish' class='img-thumbnail' alt="">
+               </div>
+          </div>
+     </div>
+     <br>
+     <br>
+
+     <div class="container">
+          <h4>House Information</h4>
+          <div class="col-lg-4">
+               <p id='name'>House Name:</p>
+               <p id='words'></p>
+               <p id='titles'></p>
+               <br>
+               <p id='region'></p>
+          </div>
+
+     </div>
+
+
+</body>
+</html>

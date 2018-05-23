@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>MongoOverview</title>
+</head>
+<body>
+     <h3>Overview</h3>
+
+     <hr>
+
+     <form action="/users" method="post">
+          <div class="formData">
+               <label for="name">Name:  </label>
+               <input type="text" name="name">
+          </div>
+          <div class="formData">
+               <label for="age">Age:  </label>
+               <input type="number" name="age">
+          </div>
+          <input type="submit" value="Add User">
+     </form>
+
+     <hr>
+
+     <div class="users">
+
+          <% if(users) { %>
+
+          <% for ( var i in users) { %>
+               <p>Name: <%= users[i].name %></p>
+               <p>Age: <%= users[i].age %></p>
+               <hr>
+          <% } %>
+
+          <% } %>
+
+     </div>
+
+     <div class="errors">
+
+          <% if(typeof(errors) != 'undefined') { %>
+               <% for ( var i in errors) { %>
+                    <h2><%= errors[i].message %></h2>
+                    <hr>
+               <% } %>
+          <% } %>
+
+     </div>
+</body>
+</html>

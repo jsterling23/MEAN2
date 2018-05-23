@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Index Animals</title>
+</head>
+<body>
+     <h1>List of animals</h1>
+     <hr>
+     <br>
+          <table>
+               <thead>
+                    <th>Name</th>
+                    <th>Legs</th>
+                    <th>Action</th>
+               </thead>
+               <tbody>
+                    <% for (var i in animals) { %>
+                    <!-- <h1><%= animals[i].id %></h1> -->
+                    <tr>
+                         <td><%= animals[i].name %></td>
+                         <td><%= animals[i].legs %></td>
+                         <td>
+                              <form action="/animal/edit/<%= animals[i].id %>" method="get">
+                                   <input type="submit" name="" value="Edit">
+                              </form>
+                              <form action="/animal/destroy/<%= animals[i].id %>" method="get">
+                                   <input type="submit" name="" value="Delete">
+                              </form>
+                         </td>
+                    </tr>
+
+                    <% } %>
+               </tbody>
+          </table>
+     <hr>
+     <a href="/animal/new">Add a new animal</a>
+</body>
+</html>
+
+
+<!--
+GET '/' Displays all of the mongooses.
+GET '/mongooses/:id' Displays information about one mongoose.
+GET '/mongooses/new' Displays a form for making a new mongoose.
+POST '/mongooses' Should be the action attribute for the form in the above route (GET '/mongooses/new').
+GET '/mongooses/edit/:id' Should show a form to edit an existing mongoose.
+POST '/mongooses/:id' Should be the action attribute for the form in the above route (GET '/mongooses/edit/:id').
+POST '/mongooses/destroy/:id' Should delete the mongoose from the database by ID.
+Remember these routes are just examples, avoid using mongooses for your dashboard if you can! -->

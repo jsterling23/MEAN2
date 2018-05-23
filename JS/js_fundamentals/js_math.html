@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>JS Math</title>
+</head>
+<body>
+     <script>
+
+
+          function zero_negativity(array){
+               for (let i = 0; i <= array.length; i++){
+                    if(array[i] < 0){
+                         return false
+                    };
+
+               };
+               return true
+          };
+          // let test1 = zero_negativity([1,2,3,-2])
+          // console.log(test1)
+
+
+          // *********************************************************
+
+
+          function is_even(num){
+               if (num % 2 == 0){
+                    return true
+               }
+               else{
+                    return false
+               }
+          };
+          //
+          // let test2 = is_even([3]);
+          // console.log(test2);
+
+
+          // *********************************************************
+
+
+          function how_many_even(array){
+               var total = 0;
+               for (let i = 0; i <= array.length; i++){
+                    if(array[i] % 2 === 0){
+                         total += 1
+                    };
+               };
+               return total
+          };
+
+          // let test3 = how_many_even([2,2,3,4,5,6,7,8,9,10,10,2])
+          // console.log(test3);
+          // let test3_2 = is_even(test3)
+          // console.log(test3_2)
+
+     //      option2
+     //      function howManyEven(arr) {
+     //      let sum = 0;
+     //      for (let i =0; i < arr.length; i++) {
+     //           if (isEven(arr[i])) {
+     //                sum += 1;
+     //           }
+     //      }
+     //      return sum;
+     // }
+
+
+          // *********************************************************
+
+
+          function create_dummy_array(num){
+               const new_array = [];
+               for (let i = 0; i < num; i++){
+                    let x = Math.floor(Math.random() * 10)
+                    new_array.push(x)
+               };
+               return new_array
+          };
+
+          // let test4 = create_dummy_array(8)
+          // console.log(test4)
+
+
+          // *********************************************************
+          
+
+          function random_choice(array){
+               let r_num = Math.floor(Math.random() * array.length)
+               return array[r_num]
+          };
+
+          let test5 = random_choice([2,2,2,12,2,2,2,2,2,2,2])
+          console.log(test5)
+
+
+
+     </script>
+</body>
+</html>
