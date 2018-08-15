@@ -56,7 +56,7 @@ module.exports = function Route(app, server){
 
           socket.on('take_this_data', (data) => {
                console.log('in the server with the take this data')
-               io.emit('put_this_there', {data: 'this is the fucking data I want to broadcast to every person!'});
+               io.emit('put_this_there', {data: 'this is the data I want to broadcast to every person!'});
           })
      })
 
