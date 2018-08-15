@@ -41,7 +41,7 @@
                });
 
                $('#new_message').submit( () => {
-                    console.log('pushing the fucking submit button')
+                    console.log('pushing the submit button')
                     socket.emit('new_message', {message: $('#message').val(), user: current_user})
                     return false;
                });
@@ -86,6 +86,6 @@
      </form>
      <br>
      <br>
-     <button type="button" id='button' name="button">Push me bitch</button>
+     <button type="button" id='button' name="button">Push me</button>
 </body>
 </html>
