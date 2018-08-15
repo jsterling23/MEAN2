@@ -20,7 +20,7 @@ module.exports = function Route(app, server) {
                     res.json(users);
                })
                .catch(errors => {
-                    console.log('Something went terribly wrong bitch!');
+                    console.log('Something went terribly wrong!');
                     console.log(errors);
                     res.redirect('/');
                })
